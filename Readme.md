@@ -4,6 +4,16 @@
 
 ## 1. 编译依赖
 
+看[官网](http://caffe.berkeleyvision.org/install_apt.html) 和 [Gist](https://gist.github.com/arundasan91/b432cb011d1c45b65222d0fac5f9232c)：
+
+```bash
+sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
+sudo apt-get install --no-install-recommends libboost-all-dev
+sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev
+```
+
+
+
 ## 2. Config文件
 
 成功编译CPU版本的Config文件放在文章最后。
@@ -25,7 +35,7 @@ $ locate cublas_v2.h
 /usr/local/cuda-9.1/targets/x86_64-linux/include/cublas_v2.h
 ```
 
-在编译命令行中包含cuda的头文件目录。
+如上搜索包含cuda的头文件目录。之后在命令行编译中包含。
 
 ### 4.2. 报错"caffe/proto/caffe.pb.h: No such file or directory"
 ```bash
@@ -38,7 +48,10 @@ $ mv src/caffe/proto/caffe.pb.h include/caffe/proto
 
 ### 4.3. 正确编译命令
 
-一定记得
+一定记得要加上：
+
+- 链接caffe lib;
+- 包含cuda和caffe的头文件
 
 ```bash
 g++ *.cpp -o test `pkg-config --libs --cflags opencv` \
@@ -47,9 +60,21 @@ g++ *.cpp -o test `pkg-config --libs --cflags opencv` \
 -L /home/cunyuan/.caffe/build/lib -lcaffe
 ```
 
+### 4.4. python import error
 
+```bash
+pip3 install python-dateutil --upgrade
+```
 
+### 4.5. opencv import error: Undefined reference to cv::foo( )
 
+> [GitHub issue and solution](https://github.com/BVLC/caffe/issues/2348)
+
+我也不知道这是什么情况. 我的opencv在早前即已配置完成. 原先直接在caffe根目录编译报此错误, 神秘地建立caffe/build文件夹, cd build, 再在其中make就不会报错.
+
+## 附录
+
+### $.1. Makefile.config 
 
 ```makefile
 PROJECT := caffe
