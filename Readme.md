@@ -66,8 +66,8 @@ sudo make install
 
 ### 4.1. Error “cublas_v2.h: No such file or directory"
 ```bash
-$ locate cublas_v2.h
-/usr/local/cuda-9.1/targets/x86_64-linux/include/cublas_v2.h
+locate cublas_v2.h
+>> /usr/local/cuda-9.1/targets/x86_64-linux/include/cublas_v2.h
 ```
 
 如上搜索包含cuda的头文件目录。之后在命令行编译中包含。
@@ -76,9 +76,9 @@ $ locate cublas_v2.h
 ```bash
 # You need to generate caffe.pb.h manually using protoc as follows.
 # In the directory you installed Caffe to
-$ protoc src/caffe/proto/caffe.proto --cpp_out=.
-$ mkdir include/caffe/proto
-$ mv src/caffe/proto/caffe.pb.h include/caffe/proto
+protoc src/caffe/proto/caffe.proto --cpp_out=.
+mkdir include/caffe/proto
+mv src/caffe/proto/caffe.pb.h include/caffe/proto
 ```
 
 ### 4.3. How to compile your code correctly
