@@ -26,6 +26,8 @@
         {
             "name": "Linux",
             "includePath": [
+                "/usr/local/cuda-9.1/targets/x86_64-linux/include/",
+                "/home/cunyuan/.caffe/include",
                 "/usr/include/c++/7",
                 "/usr/include/x86_64-linux-gnu/c++/7",
                 "/usr/include/c++/7/backward",
@@ -40,6 +42,7 @@
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [
+                    "/home/cunyuan/.caffe/include",
                     "/usr/include/c++/7",
                     "/usr/include/x86_64-linux-gnu/c++/7",
                     "/usr/include/c++/7/backward",

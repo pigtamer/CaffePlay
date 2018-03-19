@@ -149,7 +149,20 @@ sudo apt install graphviz
 
 也可到网上找。基于prototxt的网络可视化工具还是不少的。
 
-## 
+##实例运行
+
+### LeNet - MNIST
+
+注意运行test时候，要把命令在caffe根目录运行。因为prototxt 里面有网络数据层输入的config，这个数据位置是用相对路径书写的。
+
+```bash
+caffe test \
+-model ~/.caffe/examples/mnist/lenet_train_test.prototxt \
+-weights ~/.caffe/examples/mnist/lenet_iter_10000.caffemodel \
+-iterations 100
+```
+
+
 
 ## 附录
 
