@@ -54,10 +54,11 @@ sudo ln -s ./tools/caffe /usr/bin/caffe
 # in <caffe>
 # edit Makefile.config
 make all -j8
+make pycaffe
 make test
 make runtest -j8
-
-sudo make install
+sudo cp build/lib/libcaffe.so* /usr/lib
+sudo cp -r python/caffe/ /usr/local/lib/python3.6/dist-packages/
 ```
 
 
@@ -108,6 +109,47 @@ pip3 install python-dateutil --upgrade
 Just replace some lines in Makefile.config.
 
 我也不知道这是什么情况. 我的opencv在早前即已配置完成. 原先直接在caffe根目录编译报此错误, 神秘地建立caffe/build文件夹, cd build, 再在其中make就不会报错.
+
+### 4.6. Pycaffe build error
+
+>  ERROR : /usr/bin/ld: cannot find -lboost_python3
+
+```bash
+locate libboost_python-py36.so
+>> /usr/lib/x86_64-linux-gnu/libboost_python-py36.so
+>> /usr/lib/x86_64-linux-gnu/libboost_python-py36.so.1.62.0
+```
+
+Then:
+
+```bash
+sudo ln -s /usr/lib/x86_64-linux-gnu/libboost_python-py36.so /usr/lib/x86_64-linux-gnu/libboost_python3.so
+
+make pycaffe -j4
+```
+
+
+
+### 4.7. Visualize Caffe Networks
+
+Caffe 自己有可视化网络的工具。
+
+```bash
+python3  ./python/draw_net.py \    
+./examples/siamese/mnist_siamese.prototxt \    
+./examples/siamese/mnist_siamese.png`
+```
+
+缺什么装什么：
+
+```bash
+pip3 install pydotplus
+sudo apt install graphviz
+```
+
+也可到网上找。基于prototxt的网络可视化工具还是不少的。
+
+## 
 
 ## 附录
 
