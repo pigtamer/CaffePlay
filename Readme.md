@@ -7,7 +7,7 @@
 看[官网](http://caffe.berkeleyvision.org/install_apt.html) 和 [Gist](https://gist.github.com/arundasan91/b432cb011d1c45b65222d0fac5f9232c)：
 
 ```bash
-sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
+sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler libatlas-base-dev
 sudo apt-get install --no-install-recommends libboost-all-dev
 sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev
 ```
@@ -54,8 +54,8 @@ sudo ln -s ./tools/caffe /usr/bin/caffe
 # in <caffe>
 # edit Makefile.config
 make all -j8
-make pycaffe
-make test
+make pycaffe -j8
+make test -j8
 make runtest -j8
 sudo cp build/lib/libcaffe.so* /usr/lib
 sudo cp -r python/caffe/ /usr/local/lib/python3.6/dist-packages/
@@ -143,8 +143,7 @@ python3  ./python/draw_net.py \
 缺什么装什么：
 
 ```bash
-pip3 install pydotplus
-sudo apt install graphviz
+pip3 install pydotplus && sudo apt install graphviz
 ```
 
 也可到网上找。基于prototxt的网络可视化工具还是不少的。
