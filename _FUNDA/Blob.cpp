@@ -10,5 +10,9 @@ int main(int argc, char **argv)
     cout << "Size: " << Blb.shape_string() << endl;
     Blb.Reshape(1, 2, 3, 4);
     cout << "Resized: " <<  Blb.shape_string() << endl;
-    
+    float *pda = Blb.mutable_cpu_data();
+    for (size_t i = 0; i< Blb.count(); i++){
+        pda[i] = i;
+        
+    }
 }
