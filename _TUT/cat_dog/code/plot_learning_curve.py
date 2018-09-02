@@ -21,7 +21,7 @@ import matplotlib.pylab as plt
 plt.style.use('ggplot')
 
 
-caffe_path = '/home/ubuntu/caffe/'
+TOOLS_PATH = './'
 model_log_path = sys.argv[1]
 learning_curve_path = sys.argv[2]
 
@@ -33,7 +33,7 @@ os.chdir(model_log_dir_path)
 Generating training and test logs
 '''
 #Parsing training/validation logs
-command = caffe_path + 'tools/extra/parse_log.sh ' + model_log_path
+command = TOOLS_PATH + 'parse_log.sh ' + model_log_path
 process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
 process.wait()
 #Read training and test logs
